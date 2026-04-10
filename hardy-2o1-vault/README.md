@@ -1,3 +1,4 @@
+## 哈代二盖一体系
 书：https://drive.google.com/file/d/1YBjoYo_tl1FEvWHo6_xOvMyOrwfzJGcb/view
 
 ## 开叫
@@ -464,7 +465,7 @@
 - *4♢!*：将牌
 
 #### 2NT!，改良Jacoby
-｜p162，p423｜
+｜p162，p423
 - 四+支持，16p+
 - 开叫人叫3阶新花显示单缺，如无单缺自然叫回原花色
 
