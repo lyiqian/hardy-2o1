@@ -24,17 +24,17 @@
             }
           },
           {
-            "id": "d53b0dff26b4470a",
+            "id": "7c0ad4e370e72624",
             "type": "leaf",
             "state": {
-              "type": "diff-view",
+              "type": "markdown",
               "state": {
-                "aFile": "hardy-2o1-vault/README.md",
-                "bFile": "hardy-2o1-vault/README.md",
-                "aRef": ""
+                "file": "hardy-2o1-vault/README.md",
+                "mode": "preview",
+                "source": false
               },
-              "icon": "git-pull-request",
-              "title": "Diff: README"
+              "icon": "lucide-file",
+              "title": "README"
             }
           }
         ],
@@ -190,7 +190,7 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "d53b0dff26b4470a",
+  "active": "7c0ad4e370e72624",
   "lastOpenFiles": [
     "hardy-2o1-vault/README.md",
     "README.md",
