@@ -1,0 +1,144 @@
+filters:
+  and:
+    - file.inFolder("Problem Hands/hands")
+    - file.ext == "md"
+formulas:
+  rank: if(importance == "重点关注", 1, if(importance == "中", 2, if(importance == "低", 3, 4)))
+  重要度: if(importance == "重点关注", "🔴 重点关注", if(importance == "中", "🟡 中", if(importance == "低", "🟢 低", "")))
+  状态: if(done, "✅", "⏳")
+properties:
+  file.name:
+    displayName: 牌例
+  date:
+    displayName: 日期
+  event:
+    displayName: 赛事
+  platform:
+    displayName: 平台
+  issue:
+    displayName: 问题类型
+  topics:
+    displayName: 子标签
+  summary:
+    displayName: 总结
+  hardy:
+    displayName: 哈代叫品
+  done:
+    displayName: 已复盘
+  formula.重要度:
+    displayName: 重要度
+  formula.状态:
+    displayName: 状态
+views:
+  - type: table
+    name: 全部
+    order:
+      - file.name
+      - date
+      - event
+      - issue
+      - topics
+      - formula.重要度
+      - done
+      - summary
+      - hardy
+    sort:
+      - property: id
+        direction: DESC
+    summaries:
+      done: Checked
+  - type: table
+    name: 待复盘
+    filters:
+      and:
+        - done != true
+    groupBy:
+      property: formula.重要度
+      direction: DESC
+    order:
+      - file.name
+      - date
+      - issue
+      - topics
+      - summary
+      - hardy
+    sort:
+      - property: formula.rank
+        direction: ASC
+      - property: id
+        direction: DESC
+  - type: table
+    name: 重点关注
+    filters:
+      and:
+        - importance == "重点关注"
+    order:
+      - file.name
+      - formula.状态
+      - date
+      - issue
+      - topics
+      - summary
+      - hardy
+    sort:
+      - property: id
+        direction: DESC
+  - type: table
+    name: 叫牌
+    filters:
+      and:
+        - issue.contains("叫牌")
+    order:
+      - file.name
+      - formula.状态
+      - formula.重要度
+      - hardy
+      - topics
+      - summary
+    sort:
+      - property: id
+        direction: DESC
+  - type: table
+    name: 叫牌·未关联叫品
+    filters:
+      and:
+        - issue.contains("叫牌")
+        - hardy.isEmpty()
+    order:
+      - file.name
+      - formula.状态
+      - topics
+      - summary
+    sort:
+      - property: id
+        direction: DESC
+  - type: table
+    name: 防守与坐庄
+    filters:
+      or:
+        - issue.contains("防守")
+        - issue.contains("坐庄")
+    groupBy:
+      property: issue
+      direction: ASC
+    order:
+      - file.name
+      - formula.状态
+      - formula.重要度
+      - topics
+      - summary
+    sort:
+      - property: id
+        direction: DESC
+  - type: cards
+    name: 牌图卡片
+    order:
+      - file.name
+      - formula.重要度
+      - formula.状态
+      - summary
+    sort:
+      - property: id
+        direction: DESC
+    image: note.cover
+    imageFit: contain
